@@ -1,0 +1,16 @@
+2026-03-27 16:19:12,426 - agent - INFO - logger_handler.py:61 - 这是一条info日志
+2026-03-27 16:19:12,427 - agent - ERROR - logger_handler.py:63 - 这是一条error日志
+2026-03-27 16:19:12,427 - agent - WARNING - logger_handler.py:64 - 这是一条warning日志
+2026-03-27 16:19:41,921 - agent - INFO - logger_handler.py:62 - 这是一条info日志
+2026-03-27 16:19:41,921 - agent - ERROR - logger_handler.py:64 - 这是一条error日志
+2026-03-27 16:19:41,921 - agent - WARNING - logger_handler.py:65 - 这是一条warning日志
+2026-03-27 16:20:09,757 - agent - INFO - logger_handler.py:61 - 这是一条info日志
+2026-03-27 16:20:09,757 - agent - ERROR - logger_handler.py:63 - 这是一条error日志
+2026-03-27 16:20:09,757 - agent - WARNING - logger_handler.py:64 - 这是一条warning日志
+2026-03-27 16:20:26,456 - agent - INFO - logger_handler.py:62 - 这是一条info日志
+2026-03-27 16:20:26,456 - agent - ERROR - logger_handler.py:64 - 这是一条error日志
+2026-03-27 16:20:26,456 - agent - WARNING - logger_handler.py:65 - 这是一条warning日志
+2026-03-27 16:21:14,767 - agent - INFO - logger_handler.py:60 - this is info log
+2026-03-27 16:21:14,767 - agent - ERROR - logger_handler.py:62 - this is error log
+2026-03-27 16:21:14,767 - agent - WARNING - logger_handler.py:63 - this is warning log
+2026-03-27 19:15:22,579 - agent - ERROR - prompt_loader.py:32 - load rag_prompt failed: [Errno 2] No such file or directory: 'd:\\Program Files\\demo\\torchProject\\heimaAgent\\zhisaotong\\prompts/rag_summarize.txt'

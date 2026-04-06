@@ -1,0 +1,8 @@
+2026-03-28 18:21:47,872 - agent - INFO - vector_store.py:104 - file d:\Program Files\demo\torchProject\heimaAgent\zhisaotong\data\nihao.txt load success
+2026-03-28 18:22:14,524 - agent - INFO - vector_store.py:82 - file D:\Program Files\demo\torchProject\heimaAgent\zhisaotong\data\nihao.txt already exists, skip
+2026-03-28 18:23:05,934 - agent - INFO - vector_store.py:82 - file D:\Program Files\demo\torchProject\heimaAgent\zhisaotong\data\nihao.txt already exists, skip
+2026-03-28 18:24:06,934 - agent - INFO - vector_store.py:82 - file d:\Program Files\demo\torchProject\heimaAgent\zhisaotong\data\nihao.txt already exists, skip
+2026-03-28 18:25:04,926 - agent - INFO - vector_store.py:104 - file D:\Program Files\demo\torchProject\heimaAgent\zhisaotong\data\n.txt load success
+2026-03-28 18:25:04,950 - agent - INFO - vector_store.py:82 - file D:\Program Files\demo\torchProject\heimaAgent\zhisaotong\data\nihao.txt already exists, skip
+2026-03-28 18:32:08,599 - agent - INFO - vector_store.py:82 - file D:\Program Files\demo\torchProject\heimaAgent\zhisaotong\data\n.txt already exists, skip
+2026-03-28 18:32:08,599 - agent - INFO - vector_store.py:82 - file D:\Program Files\demo\torchProject\heimaAgent\zhisaotong\data\nihao.txt already exists, skip

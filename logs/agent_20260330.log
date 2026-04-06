@@ -1,0 +1,82 @@
+2026-03-30 00:30:58,830 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有1条消息
+2026-03-30 00:33:38,866 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有1条消息
+2026-03-30 00:33:43,205 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_user_location
+2026-03-30 00:33:43,205 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-30 00:33:43,206 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_user_location 调用成功
+2026-03-30 00:33:43,210 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有3条消息
+2026-03-30 00:33:48,094 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_weather
+2026-03-30 00:33:48,094 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'city': '上海'}
+2026-03-30 00:33:48,097 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_weather 调用成功
+2026-03-30 00:33:48,100 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有5条消息
+2026-03-30 00:36:00,358 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有1条消息
+2026-03-30 00:36:02,813 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_user_id
+2026-03-30 00:36:02,815 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-30 00:36:02,817 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_user_id 调用成功
+2026-03-30 00:36:02,823 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有3条消息
+2026-03-30 00:36:07,385 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_current_month
+2026-03-30 00:36:07,386 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-30 00:36:07,387 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_current_month 调用成功
+2026-03-30 00:36:07,391 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有5条消息
+2026-03-30 00:36:10,678 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 fill_context_for_report
+2026-03-30 00:36:10,678 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-30 00:36:10,679 - agent - INFO - middleware.py:24 - [tool monitor]工具 fill_context_for_report 调用成功
+2026-03-30 00:36:10,681 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有7条消息
+2026-03-30 00:36:15,620 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 fetch_external_data
+2026-03-30 00:36:15,620 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '901234', 'month': '2025-05'}
+2026-03-30 00:36:15,628 - agent - WARNING - agent_tools.py:81 - [fetch_external_data]未能检索到用户901234在2025-05月的使用记录
+2026-03-30 00:36:15,630 - agent - INFO - middleware.py:24 - [tool monitor]工具 fetch_external_data 调用成功
+2026-03-30 00:36:15,633 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有9条消息
+2026-03-30 00:36:39,515 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有1条消息
+2026-03-30 00:36:42,927 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_user_location
+2026-03-30 00:36:42,928 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-30 00:36:42,928 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_user_location 调用成功
+2026-03-30 00:36:42,931 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有3条消息
+2026-03-30 00:36:48,806 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_weather
+2026-03-30 00:36:48,807 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'city': '北京'}
+2026-03-30 00:36:48,811 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_weather 调用成功
+2026-03-30 00:36:48,817 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有5条消息
+2026-03-30 00:37:11,577 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有1条消息
+2026-03-30 00:37:13,843 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_user_location
+2026-03-30 00:37:13,844 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-30 00:37:13,846 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_user_location 调用成功
+2026-03-30 00:37:13,850 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有3条消息
+2026-03-30 00:37:22,444 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有1条消息
+2026-03-30 00:37:25,339 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_user_id
+2026-03-30 00:37:25,341 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-30 00:37:25,341 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_user_id 调用成功
+2026-03-30 00:37:25,344 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有3条消息
+2026-03-30 00:37:29,333 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_current_month
+2026-03-30 00:37:29,335 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-30 00:37:29,337 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_current_month 调用成功
+2026-03-30 00:37:29,341 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有5条消息
+2026-03-30 00:37:32,731 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 fill_context_for_report
+2026-03-30 00:37:32,733 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-30 00:37:32,735 - agent - INFO - middleware.py:24 - [tool monitor]工具 fill_context_for_report 调用成功
+2026-03-30 00:37:32,738 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有7条消息
+2026-03-30 00:37:39,967 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 fetch_external_data
+2026-03-30 00:37:39,968 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '345678', 'month': '2025-06'}
+2026-03-30 00:37:39,969 - agent - WARNING - agent_tools.py:81 - [fetch_external_data]未能检索到用户345678在2025-06月的使用记录
+2026-03-30 00:37:39,969 - agent - INFO - middleware.py:24 - [tool monitor]工具 fetch_external_data 调用成功
+2026-03-30 00:37:39,971 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有9条消息
+2026-03-30 00:37:47,091 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 rag_summarize
+2026-03-30 00:37:47,091 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人日常保养与维护建议'}
+2026-03-30 00:37:49,685 - agent - INFO - middleware.py:24 - [tool monitor]工具 rag_summarize 调用成功
+2026-03-30 00:37:49,688 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有11条消息
+2026-03-30 00:37:54,865 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 rag_summarize
+2026-03-30 00:37:54,865 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人耗材更换周期与清洁效率优化'}
+2026-03-30 00:37:57,744 - agent - INFO - middleware.py:24 - [tool monitor]工具 rag_summarize 调用成功
+2026-03-30 00:37:57,749 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有13条消息
+2026-03-30 00:38:03,970 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 fetch_external_data
+2026-03-30 00:38:03,970 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'user_id': '345678', 'month': '2025-06'}
+2026-03-30 00:38:03,973 - agent - WARNING - agent_tools.py:81 - [fetch_external_data]未能检索到用户345678在2025-06月的使用记录
+2026-03-30 00:38:03,973 - agent - INFO - middleware.py:24 - [tool monitor]工具 fetch_external_data 调用成功
+2026-03-30 00:38:03,976 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有15条消息
+2026-03-30 00:38:08,259 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有1条消息
+2026-03-30 00:38:17,131 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_user_location
+2026-03-30 00:38:17,131 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-03-30 00:38:17,133 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_user_location 调用成功
+2026-03-30 00:38:17,137 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有3条消息
+2026-03-30 00:38:19,496 - agent - INFO - middleware.py:19 - [tool monitor]执行工具 get_weather
+2026-03-30 00:38:19,496 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'city': '北京'}
+2026-03-30 00:38:19,497 - agent - INFO - middleware.py:24 - [tool monitor]工具 get_weather 调用成功
+2026-03-30 00:38:19,499 - agent - INFO - middleware.py:39 - [log before model]即将调用模型，带有5条消息

@@ -1,0 +1,3 @@
+chat_model_name: qwen3-max
+embedding_model_name: text-embedding-v4
+dashscope_api_key: sk-edbd925ffc1f42aea4428b3d995ba30b
