@@ -4,7 +4,7 @@ from agent.tools.draw_tools import draw_image_with_display
 import time
 import re
 import os
-
+#test
 st.set_page_config(
     page_title="基于AI的图像生成系统",
     page_icon="🤖",
