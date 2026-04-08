@@ -8,7 +8,7 @@ from utills.config_handler import chroma_conf
 from model.factory import embed_model
 from langchain_text_splitters import RecursiveCharacterTextSplitter 
 from utills.path_tool import get_abs_path
-from utills.file_handler import pdf_loader, txt_loader, listdir_with_allowed_type, get_file_md5_hex
+from utills.file_handler import pdf_loader, txt_loader, listdir_with_allowed_type, get_file_simhash, hamming_distance
 from utills.logger_handler import logger
 
 
@@ -34,32 +34,41 @@ class VectorStoreService:
 
         '''
         从数据文件夹内读取数据 转为向量存入向量数据库
-        要计算md5值做去重
+        使用simhash值做去重（基于汉明距离判断相似度）
         '''
 
+        SIMILARITY_THRESHOLD = 3
 
-        #检查md5文件是否存在
-        def check_md5_hex(md5_for_check:str):
-
-            #如果文件不存在
+        def check_simhash(simhash_for_check: str) -> bool:
+            # 检查simhash存储文件是否存在
             if not os.path.exists(get_abs_path(chroma_conf["md5_hex_store"])):
-                #创建文件
-                open(get_abs_path(chroma_conf["md5_hex_store"]), "w",encoding="utf-8").close()
+                # 文件不存在则创建空文件
+                open(get_abs_path(chroma_conf["md5_hex_store"]), "w", encoding="utf-8").close()
+                # 新文件中没有记录，返回False表示不存在相似文档
                 return False
-                
-            #如果文件存在
-            with open(get_abs_path(chroma_conf["md5_hex_store"]), "r",encoding="utf-8") as f:
+
+            # 打开simhash存储文件（md5_hex_store）进行读取
+            with open(get_abs_path(chroma_conf["md5_hex_store"]), "r", encoding="utf-8") as f:
+                # 逐行读取文件中的所有simhash值
                 for line in f.readlines():
-                    line=line.strip()
-                    if line==md5_for_check:
+                    # 去除行首尾的空白字符
+                    line = line.strip()
+                    # 跳过空行
+                    if not line:
+                        continue
+                    # 计算当前simhash与文件中simhash的汉明距离
+                    distance = hamming_distance(simhash_for_check, line)
+                    # 如果汉明距离在阈值范围内，说明存在相似文档
+                    if 0 <= distance <= SIMILARITY_THRESHOLD:
                         return True
+                # 遍历完所有记录都没有找到相似文档，返回False
                 return False
 
-        def save_md5_hex(md5_for_save:str):
-            with open(get_abs_path(chroma_conf["md5_hex_store"]), "a",encoding="utf-8") as f:
-                f.write(md5_for_save+"\n")
+        def save_simhash(simhash_for_save: str):
+            with open(get_abs_path(chroma_conf["md5_hex_store"]), "a", encoding="utf-8") as f:
+                f.write(simhash_for_save + "\n")
 
-        def get_file_documents(read_path:str):
+        def get_file_documents(read_path: str):
 
             if read_path.endswith("txt"):
                 return txt_loader(read_path)
@@ -68,38 +77,38 @@ class VectorStoreService:
                 return pdf_loader(read_path)
             return []
 
-        allowed_files_path:list[str]=listdir_with_allowed_type(
+        allowed_files_path: list[str] = listdir_with_allowed_type(
             get_abs_path(chroma_conf["data_path"]),
             tuple(chroma_conf["allow_knowledge_file_type"])
         )
 
         for path in allowed_files_path:
-            #获取文件的MD5值
-            md5_hex=get_file_md5_hex(path)
+            simhash_value = get_file_simhash(path)
 
-            #如果文件存在
-            if check_md5_hex(md5_hex):
-                logger.info(f"file {path} already exists, skip")
+            if not simhash_value:
+                logger.error(f"file {path} simhash calculation failed, skip")
+                continue
+
+            if check_simhash(simhash_value):
+                logger.info(f"file {path} already exists (similar document), skip")
                 continue
 
             try:
-                documents=get_file_documents(path)
+                documents = get_file_documents(path)
 
                 if not documents:
                     logger.error(f"file {path} load failed, skip")
                     continue
-               
-                split_documents:list[Document]=self.splitter.split_documents(documents)
+
+                split_documents: list[Document] = self.splitter.split_documents(documents)
 
                 if not split_documents:
                     logger.error(f"file {path} split failed, skip")
                     continue
 
-                #将内容存入向量库
                 self.vector_store.add_documents(split_documents)
 
-                #记录这个已经处理好的文件的MD5值，避免下次重复加载
-                save_md5_hex(md5_hex)
+                save_simhash(simhash_value)
 
                 logger.info(f"file {path} load success")
             except Exception as e:
