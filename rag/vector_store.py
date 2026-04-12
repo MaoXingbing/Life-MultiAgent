@@ -16,7 +16,7 @@ class VectorStoreService:
     def __init__(self):
         self.vector_store=Chroma(
             collection_name=chroma_conf["collection_name"],
-            embedding_function=embed_model.generater(),   #TODO:被修改了
+            embedding_function=embed_model.generater(),   
             persist_directory=chroma_conf["persist_directory"],
         )
 
@@ -94,18 +94,21 @@ class VectorStoreService:
                 continue
 
             try:
+                #读取文件内容
                 documents = get_file_documents(path)
 
                 if not documents:
                     logger.error(f"file {path} load failed, skip")
                     continue
 
+                    # 文档分割
                 split_documents: list[Document] = self.splitter.split_documents(documents)
 
                 if not split_documents:
                     logger.error(f"file {path} split failed, skip")
                     continue
 
+                    # 存储向量
                 self.vector_store.add_documents(split_documents)
 
                 save_simhash(simhash_value)

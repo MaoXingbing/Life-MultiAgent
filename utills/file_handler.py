@@ -3,7 +3,7 @@ import hashlib
 import jieba
 from langchain_core.documents import Document
 from langchain_community.document_loaders import PyPDFLoader, TextLoader
-from logger_handler import logger
+from utills.logger_handler import logger
 
 
 def get_file_simhash(file_path: str, hash_bits: int = 64):
