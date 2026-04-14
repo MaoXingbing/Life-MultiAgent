@@ -2,23 +2,39 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from langchain_chroma import Chroma
+# 必须放在所有导入前，设置镜像
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+
+from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
 from utills.config_handler import chroma_conf
-from model.factory import embed_model
+from model.BGE_factory import BGEFactory
 from langchain_text_splitters import RecursiveCharacterTextSplitter 
 from utills.path_tool import get_abs_path
 from utills.file_handler import pdf_loader, txt_loader, listdir_with_allowed_type, get_file_simhash, hamming_distance
 from utills.logger_handler import logger
 
 
+
 class VectorStoreService:
     def __init__(self):
-        self.vector_store=Chroma(
+        # 使用 BGEFactory 生成中文嵌入模型
+        self.bge_embeddings = BGEFactory().generater()
+
+        # Chroma 向量数据库使用 BGE 模型作为嵌入函数
+        self.vector_store = Chroma(
             collection_name=chroma_conf["collection_name"],
-            embedding_function=embed_model.generater(),   
+            embedding_function=self.bge_embeddings,
             persist_directory=chroma_conf["persist_directory"],
         )
+
+        #使用向量数据库的检索器
+        # self.vector_store=Chroma(
+        #     collection_name=chroma_conf["collection_name"],
+        #     embedding_function=embed_model().generater(),
+        #     persist_directory=chroma_conf["persist_directory"],
+        # )
+
 
         self.splitter=RecursiveCharacterTextSplitter(
             chunk_size=chroma_conf["chunk_size"],

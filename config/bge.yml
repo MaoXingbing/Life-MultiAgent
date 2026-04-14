@@ -1,8 +1,9 @@
 # BGE 模型配置
-model_name: BAAI/bge-m3
-model_path: ./models/bge-m3
-device: cpu
-normalize_embeddings: true
+model_name: BAAI/bge-small-zh-v1.5
+model_kwargs:
+  device: "cpu"
+encode_kwargs:
+  normalize_embeddings: True
 
 # 向量数据库配置
 vector_size: 1024

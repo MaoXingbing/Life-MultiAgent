@@ -1,16 +1,28 @@
 import streamlit as st
-from agent.react_agent import ReactAgent
-from agent.tools.draw_tools import draw_image_with_display
 import time
 import re
 import os
-#test
+
+# 页面配置必须放在最前面
 st.set_page_config(
     page_title="基于AI的图像生成系统",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# 使用 Streamlit 缓存，只初始化一次 Agent
+@st.cache_resource(show_spinner=False)
+def load_agent():
+    """缓存 Agent 实例，避免每次刷新都重新加载模型"""
+    from agent.react_agent import ReactAgent
+    return ReactAgent()
+
+@st.cache_resource(show_spinner=False)
+def load_draw_tool():
+    """缓存绘图工具"""
+    from agent.tools.draw_tools import draw_image_with_display
+    return draw_image_with_display
 
 st.markdown("""
 <style>
@@ -136,9 +148,22 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-if "agent" not in st.session_state:
-    with st.spinner("正在初始化智能体..."):
-        st.session_state["agent"] = ReactAgent()
+if "agent_initialized" not in st.session_state:
+    st.markdown("### 🚀 正在启动 AI 智能体...")
+    st.info("首次启动需要 10-30 秒加载模型，请稍候...")
+    progress_bar = st.progress(0)
+    
+    for i in range(50):
+        progress_bar.progress(i / 50)
+        time.sleep(0.1)
+    
+    st.session_state["agent"] = load_agent()
+    st.session_state["draw_tool"] = load_draw_tool()
+    st.session_state["agent_initialized"] = True
+    progress_bar.progress(1.0)
+    st.success("✅ 智能体启动成功！")
+    time.sleep(0.5)
+    st.rerun()
 
 if "message" not in st.session_state:
     st.session_state["message"] = []
@@ -155,7 +180,7 @@ if "draw_action" in st.session_state and st.session_state["draw_action"]:
     
     with st.spinner(f"正在生成: {draw_prompt_value}"):
         try:
-            file_path, base64_str = draw_image_with_display(draw_prompt_value, return_base64=True)
+            file_path, base64_str = st.session_state["draw_tool"](draw_prompt_value, return_base64=True)
             
             st.image(f"data:image/png;base64,{base64_str}", caption=draw_prompt_value, use_container_width=True)
             
